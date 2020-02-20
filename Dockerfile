@@ -7,7 +7,7 @@ MAINTAINER Carlos Ruiz
 RUN apt-get update --fix-missing && \
   apt-get install -q -y tabix git make gcc libz-dev python-dev libbz2-dev \
 			liblzma-dev libcurl4-openssl-dev g++ libssl-dev autoconf pkg-config \
-			libncurses5-dev
+			libncurses5-dev wget unzip
 
 ## vt
 RUN cd ~ && git clone https://github.com/atks/vt.git  && \
@@ -55,4 +55,10 @@ RUN cd ~ && git clone https://github.com/samtools/bcftools.git && \
 	autoconf -Wno-syntax && \
 	./configure && \
 	make && \
-	make install 
+	make install
+
+## plink
+RUN cd ~ && mkdir plink && cd plink &&\
+ wget http://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20200219.zip &&\
+ unzip plink_linux_x86_64_20200219.zip &&\
+ cp plink /usr/bin/ && cp prettify /usr/bin/
