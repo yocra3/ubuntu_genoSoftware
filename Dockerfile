@@ -62,3 +62,11 @@ RUN cd ~ && mkdir plink && cd plink &&\
  wget http://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20200219.zip &&\
  unzip plink_linux_x86_64_20200219.zip &&\
  cp plink /usr/bin/ && cp prettify /usr/bin/
+
+
+## STAR
+RUN cd ~ && git clone https://github.com/alexdobin/STAR.git && \
+	cd STAR/source/ && \
+	make STAR
+	
+ENV PATH $PATH:~/STAR/bin/Linux_x86_64/
