@@ -91,6 +91,7 @@ ENV PATH $PATH:~/bowtie2-2.4.0/
 ## FastQ Screen
 RUN cd ~ && wget http://www.bioinformatics.babraham.ac.uk/projects/fastq_screen/fastq_screen_v0.14.0.tar.gz && \
 	tar -zxvf fastq_screen_v0.14.0.tar.gz && rm fastq_screen_v0.14.0.tar.gz
+ENV PATH $PATH:~/fastq_screen_v0.14.0/
 
 ## skewer
 RUN cd ~ && git clone https://github.com/relipmoc/skewer.git && \
@@ -102,3 +103,8 @@ RUN pip install HTSeq
 
 ## multi QC
 RUN pip install multiqc
+
+## qualimap
+RUN cd ~ && wget https://bitbucket.org/kokonech/qualimap/downloads/qualimap_v2.2.1.zip && \
+	unzip qualimap_v2.2.1.zip
+ENV PATH $PATH:~/qualimap_v2.2.1/
